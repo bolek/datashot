@@ -1,0 +1,9 @@
+.panel
+  .panel-heading
+    %h1 Editing snapshot
+  .panel-body
+    = render 'form'
+  .panel-footer
+    = link_to 'Show', @snapshot
+    |
+    \#{link_to 'Back', snapshots_path}

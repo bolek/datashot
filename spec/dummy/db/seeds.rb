@@ -1,0 +1,5 @@
+TestModel.create(a: "Dancing in the Rain", b: 100, c: "Ruth Lorenzo")
+TestModel.create(a: "Elevation", b: 12, c: "U2")
+TestModel.create(a: "A day without rain", b: 89, c: "Enya")
+TestModel.create(a: "Californication", b: 10_000, c: "Red Hot Chilli Peppers")
+TestModel.create(a: "Under the bridge", b: 1, c: "Red Hot Chilli Peppers")

@@ -1,0 +1,19 @@
+.panel
+  .panel-heading
+    %h1 Snapshots
+  %table.table-bordered.table.condensed
+    %thead
+      %tr
+        %th Name
+        %th Last run at
+        %th{:colspan => "3"}
+    %tbody
+      - @snapshots.each do |snapshot|
+        %tr
+          %td= snapshot.name
+          %td= snapshot.last_ran_at
+          %td= link_to 'Show', snapshot_path(snapshot)
+          %td= link_to 'Edit', edit_snapshot_path(snapshot)
+          %td= link_to 'Destroy', snapshot_path(snapshot), method: :delete, data: { confirm: 'Are you sure?' }
+  .panel-footer
+    = link_to 'New Snapshot', new_snapshot_path, class: "btn btn-primary"

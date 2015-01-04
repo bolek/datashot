@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title Datashot
+    = stylesheet_link_tag    "datashot/application", media: "all"
+    = javascript_include_tag "datashot/application"
+    = csrf_meta_tags
+  %body
+    .container-fluid
+      = yield
