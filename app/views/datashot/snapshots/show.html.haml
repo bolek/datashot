@@ -1,45 +1,52 @@
+- content_for :page_title do
+  Snap: #{@snapshot.name}
+
 - parsed_results = @snapshot.result ? JSON.parse(@snapshot.result) : nil
-.panel
-  .panel-heading
-    %h1
-      = @snapshot.name
-  .panel-body
-    %p
-      %strong Query:
-      = @snapshot.query
-    %p
-      %strong Last run at:
-      = @snapshot.last_ran_at
 
-    - if @snapshot.error_message
-      %p
-        %strong Error:
-        = @snapshot.error_message
+.row
+  .col.s12
+    #{link_to 'Back', snapshots_path, class: "btn"}
 
-    = link_to 'Edit', edit_snapshot_path(@snapshot), class: "btn btn-primary"
-    \#{link_to 'Back', snapshots_path, class: "btn"}
+.row
+  .col.s12
+    %ul.tabs
+      %li.tab.col.s6
+        %a{ href: "#data" } Data
+      %li.tab.col.s6
+        %a{ href: "#sql" } SQL
 
-    %h2 Results
-    - if non_empty_results?(parsed_results)
-      .btn-group
-        %a.btn.btn-default.dropdown-toggle{ "data-toggle" => "dropdown"}
-          Download as
-          %span.caret
-          .ripple-wrapper
-        %ul.dropdown-menu
+    .div#data
+      = link_to "Refresh", snapshot_path(@snapshot, snapshot: {updated_at: Time.now}), method: :put, class: "btn"
+      - if non_empty_results?(parsed_results)
+        %a.dropdown-button.btn{ href: '#', data: { activates: 'download-as'} } Download
+
+        %ul.dropdown-content#download-as
           %li= link_to "CSV", snapshot_path(@snapshot, format: :csv), target: :_blank
           %li= link_to "JSON", snapshot_path(@snapshot, format: :json), target: :_blank
-    - else
-      %p No results found.
+      - else
+        %p No results found.
 
-  - if non_empty_results?(parsed_results)
-    %table.table.table-condensed.table-bordered
-      %thead
-        %tr
-          - headers_for(parsed_results).each do |header|
-            %th #{header}
-      %tbody
-        - parsed_results.each do |row|
-          %tr
-            - row.values.each do |value|
-              %td #{value}
+        - if @snapshot.error_message
+          %p
+            %strong Error:
+            = @snapshot.error_message
+
+      %p
+        %strong Updated at:
+        = @snapshot.last_ran_at
+
+      - if non_empty_results?(parsed_results)
+        %table.table.table-condensed.table-bordered
+          %thead
+            %tr
+              - headers_for(parsed_results).each do |header|
+                %th #{header}
+          %tbody
+            - parsed_results.each do |row|
+              %tr
+                - row.values.each do |value|
+                  %td #{value}
+    .div#sql
+      = link_to "Edit", edit_snapshot_path(@snapshot), class: "btn"
+      %p
+        = @snapshot.query

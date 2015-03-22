@@ -1,7 +1,6 @@
 require "autoprefixer-rails"
-require "bootstrap-material-design"
+require "materialize-sass"
 require "sass-rails"
-require "bootstrap-sass"
 require "csv"
 require "haml-rails"
 require "jquery-rails"

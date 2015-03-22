@@ -1,3 +1,11 @@
-%h1 New snapshot
-= render 'form'
-= link_to 'Back', snapshots_path, class: "btn"
+- content_for :page_title do
+  New Snap
+
+.row
+  .col.s12
+    = link_to "Back", snapshots_path, class: "btn"
+
+.container
+  .row
+    .col.s12
+      = render 'form'

@@ -1,7 +1,7 @@
-.bs-component
-  = form_for(@snapshot, html: { class: "form-horizontal" }) do |f|
-    %fieldset
-      - if @snapshot.errors.any?
+= form_for(@snapshot) do |f|
+  - if @snapshot.errors.any?
+    .row
+      .col.s12
         #error_explanation
           %h2
             = pluralize(@snapshot.errors.count, "error")
@@ -9,17 +9,12 @@
           %ul
             - @snapshot.errors.full_messages.each do |message|
               %li= message
-      .form_group
-        = f.label :name, class: "col-lg-2 control-label"
-        .col-lg-10
-          .form-control-wrapper
-            = f.text_field :name, class: "form-control", placeholder: "name"
-            %span.material-input
-
-      .form_group
-        = f.label :query, class: "col-lg-2 control-label"
-        .col-lg-10
-          .form-control-wrapper
-            = f.text_area :query, rows: 3, class: "form-control", placeholder: "query"
-            %span.material-input
-      .actions= f.submit(class: "btn btn-primary")
+  .row
+    .col.s12.input-field
+      = f.label :name
+      = f.text_field :name
+  .row
+    .col.s12.input-field
+      = f.label :query
+      = f.text_area :query, class: "materialize-textarea"
+  .actions= f.submit(class: "btn btn-primary")

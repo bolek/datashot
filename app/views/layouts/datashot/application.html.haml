@@ -6,5 +6,15 @@
     = javascript_include_tag "datashot/application"
     = csrf_meta_tags
   %body
-    .container-fluid
+    .header
+      %nav.top-nav
+        .row
+          .col.s12
+            .nav-wrapper
+              %a.nav__page-title
+                = yield :page_title
+    .main
       = yield
+    .footer
+
+

@@ -17,8 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "autoprefixer-rails"
-  s.add_dependency "bootstrap-material-design"
-  s.add_dependency "bootstrap-sass", "~> 3.3"
+  s.add_dependency "materialize-sass"
   s.add_dependency "sass-rails", ">= 3.2"
   s.add_dependency "haml-rails"
   s.add_dependency "jquery-rails", "~> 4.0"
