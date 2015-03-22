@@ -48,5 +48,5 @@
                   %td #{value}
     .div#sql
       = link_to "Edit", edit_snapshot_path(@snapshot), class: "btn"
-      %p
-        = @snapshot.query
+      %pre
+        %code.lang-sql~ "#{@snapshot.query}"

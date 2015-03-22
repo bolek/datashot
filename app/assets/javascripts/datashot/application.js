@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require materialize-sprockets
+//= require highlight_sql
 //= require_tree .
 
+hljs.initHighlightingOnLoad();
