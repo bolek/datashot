@@ -3,6 +3,10 @@
 
 .row
   .col.s12
+    = link_to 'New Snapshot', new_snapshot_path, class: "btn waves-effect waves-light white-text"
+
+.row
+  .col.s12
     %table.bordered
       %thead
         %tr
@@ -17,6 +21,3 @@
             %td= link_to 'Show', snapshot_path(snapshot)
             %td= link_to 'Edit', edit_snapshot_path(snapshot)
             %td= link_to 'Destroy', snapshot_path(snapshot), method: :delete, data: { confirm: 'Are you sure?' }
-.row
-  .col.s12
-    = link_to 'New Snapshot', new_snapshot_path, class: "btn waves-effect waves-light white-text"
